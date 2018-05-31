@@ -1,0 +1,26 @@
+[user]
+#	email = tbd
+#	name = tbd
+[color]
+	ui = auto
+[log]
+	date = local
+[credential]
+	helper = cache --timeout=3600
+[merge]
+	tool = meld
+
+[push]
+	default = current
+[pull]
+	rebase = true
+
+[branch "master"]
+
+
+[branch]
+[alias]
+	pp = !git pull && git push
+    push-upto = "!sh -c \"echo pushing up to commit $1 ; git push origin ${1}:`git rev-parse --abbrev-ref HEAD`\" "
+# custom log of the last commits
+    clog="log -n15 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
