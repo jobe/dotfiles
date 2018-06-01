@@ -33,8 +33,10 @@ set laststatus=2
 """""""""""""""""""""""""""""""""""""
 map <C-n> :NERDTreeToggle<CR>
 map <C-a> :!tig<CR>
-map <C-Left>  :tabp<CR>
-map <C-Right>  :tabn<CR>
+map <A-Left>  :tabp<CR>
+map <A-Right>  :tabn<CR>
+map <C-Left> b
+map <C-Right> w
 
 map <C-Up> ddkP
 map <C-Down> ddp
