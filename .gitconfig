@@ -1,6 +1,6 @@
 [user]
-#	email = tbd
-#	name = tbd
+	email = tbd
+	name = tbd 
 [color]
 	ui = auto
 [log]
@@ -23,4 +23,9 @@
 	pp = !git pull && git push
     push-upto = "!sh -c \"echo pushing up to commit $1 ; git push origin ${1}:`git rev-parse --abbrev-ref HEAD`\" "
 # custom log of the last commits
-    clog="log -n15 --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"
+    cl="log -n15 --graph --pretty=format:'%Cred%h%Creset - %C(bold blue)%<(10)%an %C(yellow)%d%Creset %s %Cgreen(%cr) %Creset' --abbrev-commit"
+[rerere]
+	enabled = true
+	autoupdate = true
+[diff]
+	tool = meld
