@@ -1,8 +1,10 @@
 " show line numbers 
 set number
 
+set colorcolumn=80
 set nocompatible
 syntax on
+filetype plugin on
 set nowrap
 set encoding=utf8
 
@@ -33,13 +35,22 @@ endif
 " Always display the status line
 set laststatus=2
 
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
+" Show just the filename
+let g:airline#extensions#tabline#fnamemod = ':t'
+
+set switchbuf=usetab
 
 """""""""""""""""""""""""""""""""""""
 " Mappings configurationn
 """""""""""""""""""""""""""""""""""""
-map <C-a> :!tig<CR>
-map <A-Left>  :tabp<CR>
-map <A-Right>  :tabn<CR>
+
+let mapleader = "-"
+map <leader>a :!tig<CR>
+map <leader>h  :tabp<CR>
+map <leader>l  :tabn<CR>
 map <C-Left> b
 map <C-Right> w
 
@@ -59,6 +70,10 @@ let g:netrw_list_hide=netrw_gitignore#Hide()
 let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_winsize = 25
 
+" Snippets
+
+autocmd FileType javascript :iabbrev <buffer> iff if ()<left>
+autocmd FileType java :iabbrev <buffer> if if () then {} else {}<left>
 
 " Toggle Vexplore with Ctrl-E
 function! ToggleVExplorer()
@@ -154,3 +169,4 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
+
