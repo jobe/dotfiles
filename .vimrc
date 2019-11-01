@@ -15,10 +15,16 @@ set expandtab
 " Enable highlighting of the current line
 set cursorline
 
+" fuzzy matching
+set path+=**
+set wildmenu
+
+" Create the `tags` file (may need to install ctags first)
+command! MakeTags !ctags -R .
+
 
 " Theme and Styling 
-set t_Co=256
-set background=dark
+colorscheme desert 
 
 if (has("termguicolors"))
   set termguicolors
@@ -31,7 +37,6 @@ set laststatus=2
 """""""""""""""""""""""""""""""""""""
 " Mappings configurationn
 """""""""""""""""""""""""""""""""""""
-map <C-n> :NERDTreeToggle<CR>
 map <C-a> :!tig<CR>
 map <A-Left>  :tabp<CR>
 map <A-Right>  :tabn<CR>
@@ -40,17 +45,20 @@ map <C-Right> w
 
 map <C-Up> ddkP
 map <C-Down> ddp
+map <f5> :!docker build .<CR>
 
-let NERDTreeMapOpenInTab='<CR>'
 
 """""""""""""""""""""""""""""""""""
 " Directory browser setup
 """""""""""""""""""""""""""""""""""
-let g:netrw_banner = 0
-let g:netrw_liststyle = 3
-let g:netrw_browse_split = 4
-let g:netrw_altv = 1
+let g:netrw_banner=0        " disable annoying banner
+let g:netrw_browse_split=4  " open in prior window
+let g:netrw_altv=1          " open splits to the right
+let g:netrw_liststyle=3     " tree view
+let g:netrw_list_hide=netrw_gitignore#Hide()
+let g:netrw_list_hide.=',\(^\|\s\s\)\zs\.\S\+'
 let g:netrw_winsize = 25
+
 
 " Toggle Vexplore with Ctrl-E
 function! ToggleVExplorer()
@@ -146,6 +154,3 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
-
-
-
