@@ -4,9 +4,11 @@ set number
 set colorcolumn=80
 set nocompatible
 syntax on
-filetype plugin on
 set nowrap
 set encoding=utf8
+" omni complete (^p in insert mode)
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 
 " Set Proper Tabs
 set tabstop=4
@@ -169,4 +171,30 @@ function! DoPrettyXML()
   exe "set ft=" . l:origft
 endfunction
 command! PrettyXML call DoPrettyXML()
+
+
+
+
+
+" shift+arrow selection
+nmap <S-Up> v<Up>
+map <S-End> v<End>
+nmap <S-Down> v<Down>
+nmap <S-Left> v<Left>
+nmap <S-Right> v<Right>
+vmap <S-Up> <Up>
+vmap <S-Down> <Down>
+vmap <S-Left> <Left>
+vmap <S-Right> <Right>
+imap <S-Up> <Esc>v<Up>
+imap <S-Down> <Esc>v<Down>
+imap <S-Left> <Esc>v<Left>
+imap <S-Right> <Esc>v<Right>
+
+" copy with ctrl+ {c,x,v}
+vmap <C-c> y<Esc>i
+vmap <C-x> d<Esc>i
+map <C-v> pi
+imap <C-v> <Esc>pi
+imap <C-z> <Esc>ui
 
